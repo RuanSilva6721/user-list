@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userService->getAllUsersFromEndpoint();
-        $perPage = 20; 
+        $perPage = 10; 
         $currentPage = Paginator::resolveCurrentPage('page');
         $usersCollection = collect($users); 
         $pagedData = $usersCollection->slice(($currentPage - 1) * $perPage, $perPage)->all();

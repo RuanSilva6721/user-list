@@ -1,5 +1,5 @@
 <header>
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 md:py-3" style="height:80px; padding-top:20px; margin-bottom:20px;">
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 md:py-3" style="height:80px; padding-top:20px; margin-bottom:70px;">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="https://www.linkedin.com/in/ruan-felipe-silva-06b9631a6/" class="flex items-center">
                 <img src="https://github.com/RuanSilva6721.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" style="height: 40px;"/>

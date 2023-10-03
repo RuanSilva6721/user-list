@@ -1,65 +1,160 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# UserList
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Teste em Laravel.
 
-## About Laravel
+```bash
+php: 7.4
+laravel: 10
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Iniciando
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Clone o projeto, usando o comando abaixo (usando HTTPS):
 
-## Learning Laravel
+```bash
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+git clone https://github.com/RuanSilva6721/user-list.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Depois de clonar, acesse o repositório e instale as dependências com os comandos abaixo (para isso, utilize o [Composer](https://getcomposer.org/) ):
 
-### Premium Partners
+```bash
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+cd api-appliance
+composer install
+```
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+Após instalar as dependências, duplique o arquivo `.env.example` e renomeie um deles para `.env`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Gere uma nova chave da aplicação:
 
-## Security Vulnerabilities
+```bash
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+php artisan key:generate
+```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# user-list
+Inicie o servidor da aplicação com o comando:
+
+```bash
+
+php artisan serve
+```
+
+
+Para ver o projeto em execução, acesse [http://localhost:8000](http://localhost:8000/) .
+
+
+
+**Caso queira rodar em Docker, utilize o comando:** 
+
+Inicie o Docker em sua máquina e depois execute para subir o container da aplicação e subir o db postgres:
+
+```bash
+
+cd docker-compose up -d
+```
+
+Veja se o container da aplicação e o db postgres estão de pé:
+
+```bash
+
+docker ps
+```
+Caso não, execute:
+
+```bash
+
+docker-compose restart
+```
+
+Para ver o projeto em execução, acesse [http://localhost:9003](http://localhost:9003/) .
+
+
+
+Para acessar o container da aplicação, execute:
+
+```bash
+
+docker-compose exec -it [container da aplicação] bash
+```
+
+Instale as dependências com os comandos abaixo:
+
+```bash
+composer install
+```
+
+Execute o comando abaixo para que as tabelas sejam criadas no banco de dados:
+
+```bash
+
+php artisan migrate
+```
+
+
+Caso queira adicionar dados fictícios para o seu usuário no banco:
+
+```bash
+
+php artisan db:seed --class=BrandSeeder & php artisan db:seed --class=ProductSeeder
+```
+
+
+
+Caso queira fazer testes unitários e de integração:
+
+```bash
+
+php artisan test
+```
+
+
+## Rotas
+
+A API disponibiliza as seguintes rotas:
+
+- `GET /applianceBrand`: Retorna a lista de todas as marcas de eletrodomésticos cadastradas. 
+- `GET /applianceBrand/{id}`: Retorna os detalhes de uma marca de eletrodoméstico específica. 
+- `POST /applianceBrandCreate`: Cria um novo registro de marca de eletrodoméstico. 
+- `PUT /applianceBrand/{id}`: Atualiza uma marca de eletrodoméstico existente. 
+- `DELETE /applianceBrand/{id}`: Remove uma marca de eletrodoméstico existente. 
+- `GET /applianceProduct`: Retorna a lista de todos os produtos de eletrodomésticos cadastrados. 
+- `GET /applianceProduct/{id}`: Retorna os detalhes de um produto de eletrodoméstico específico. 
+- `GET /applianceProductOfBrand/{id}`: Retorna os produtos de eletrodomésticos de uma determinada marca. 
+- `POST /applianceProductCreate`: Cria um novo registro de produto de eletrodoméstico. 
+- `PUT /applianceProduct/{id}`: Atualiza um produto de eletrodoméstico existente. 
+- `DELETE /applianceProduct/{id}`: Remove um produto de eletrodoméstico existente.
+
+## Exemplo de Payload de Product
+
+```json
+{
+    "id": 4,
+    "name": "accusamus",
+    "description": "Sequi et in est beatae.",
+    "voltage": "110v",
+    "brand_id": 2,
+    "created_at": "2023-06-17T01:13:32.000000Z",
+    "updated_at": "2023-06-17T01:13:32.000000Z"
+}
+```
+
+## Exemplo de Payload de Brand
+
+```json
+{
+    "id": 4,
+    "name": "Philips",
+    "icon": "movie",
+    "created_at": "2023-06-17T01:13:06.000000Z",
+    "updated_at": "2023-06-17T01:13:06.000000Z"
+}
+```
+## Construído com 
+- [Laravel](https://laravel.com/)
