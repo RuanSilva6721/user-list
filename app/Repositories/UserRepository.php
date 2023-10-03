@@ -24,7 +24,7 @@ class UserRepository
             }
         } catch (\Exception $e) {
             
-            return null;
+             echo 'Exceção capturada: ',  $e->getMessage(), "\n";;
         }
     }
 }
