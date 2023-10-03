@@ -23,7 +23,7 @@ Depois de clonar, acesse o repositório e instale as dependências com os comand
 
 ```bash
 
-cd api-appliance
+cd user-list
 composer install
 ```
 
